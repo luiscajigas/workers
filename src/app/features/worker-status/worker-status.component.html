@@ -1,0 +1,81 @@
+<div class="card">
+  <div class="card-header">
+    <div class="card-title-wrap">
+      <span class="card-icon">⚡</span>
+      <div>
+        <h2>Estado de Workers</h2>
+        <p>Monitorea los procesos en segundo plano</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <ul class="status-list">
+      <li class="status-row">
+        <div class="status-info">
+          <span class="status-name">Web Worker</span>
+          <span class="status-desc">Procesamiento CSV</span>
+        </div>
+        <span class="status-chip" [attr.data-dot]="dotFor(state().webWorker)">
+          <span class="dot"></span>
+          {{ labelFor(state().webWorker) }}
+        </span>
+      </li>
+
+      <li class="status-row">
+        <div class="status-info">
+          <span class="status-name">Shared Worker</span>
+          <span class="status-desc">Sincroniza pestañas · {{ tabs() }} conectadas</span>
+        </div>
+        <span class="status-chip" [attr.data-dot]="dotFor(state().sharedWorker)">
+          <span class="dot"></span>
+          {{ labelFor(state().sharedWorker) }}
+        </span>
+      </li>
+
+      <li class="status-row">
+        <div class="status-info">
+          <span class="status-name">Service Worker</span>
+          <span class="status-desc">Caché y modo offline</span>
+        </div>
+        <span class="status-chip" [attr.data-dot]="dotFor(state().serviceWorker)">
+          <span class="dot"></span>
+          {{ labelFor(state().serviceWorker) }}
+        </span>
+      </li>
+
+      <li class="status-row">
+        <div class="status-info">
+          <span class="status-name">Conexión</span>
+          <span class="status-desc">{{ state().online ? 'En línea' : 'Sin conexión' }}</span>
+        </div>
+        <span class="status-chip" [attr.data-dot]="dotFor(state().online)">
+          <span class="dot"></span>
+          {{ state().online ? 'Online' : 'Offline' }}
+        </span>
+      </li>
+    </ul>
+
+    <div class="shared-panel">
+      <h3>Estado compartido (Shared Worker)</h3>
+      <div class="shared-grid">
+        <div class="shared-item">
+          <span>Archivo</span>
+          <strong>{{ shared().fileName || '—' }}</strong>
+        </div>
+        <div class="shared-item">
+          <span>Registros</span>
+          <strong>{{ shared().rowsCount || 0 }}</strong>
+        </div>
+        <div class="shared-item">
+          <span>Progreso</span>
+          <strong>{{ shared().progress }}%</strong>
+        </div>
+        <div class="shared-item">
+          <span>Estado</span>
+          <strong>{{ shared().status }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,131 @@
+<div class="card">
+  <div class="card-header">
+    <div class="card-title-wrap">
+      <span class="card-icon">🧪</span>
+      <div>
+        <h2>Laboratorio de Workers</h2>
+        <p>Demostración: Hilo principal vs Web Worker</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="hint">
+      <span class="hint-icon">💡</span>
+      <p>
+        Ejecuta ambas operaciones y prueba presionando
+        <strong>Mantener contador</strong> durante el cálculo.
+        <br />
+        Con el hilo principal la UI puede bloquearse momentáneamente. Con Web Worker sigue respondiendo.
+      </p>
+    </div>
+
+    <div class="form-row">
+      <label for="iterations">Iteraciones:</label>
+      <input
+        id="iterations"
+        type="number"
+        min="100000"
+        max="100000000"
+        step="500000"
+        [(ngModel)]="iterations"
+      />
+    </div>
+
+    <div class="counter-row">
+      <div>
+        <span class="counter-label">Contador UI (prueba de respuesta)</span>
+        <span class="counter-value">{{ counter() }}</span>
+      </div>
+      <button class="btn-ghost" (click)="incrementCounter()">Mantener contador</button>
+    </div>
+
+    <div class="lab-grid">
+      <div class="lab-card main-card">
+        <div class="lab-header">
+          <span class="lab-tag">🔴 Hilo principal</span>
+          <span class="lab-desc">Puede bloquear la interfaz</span>
+        </div>
+        <button class="btn-main" (click)="runMainThread()" [disabled]="mainBusy()">
+          {{ mainBusy() ? 'Procesando…' : 'Ejecutar en hilo principal' }}
+        </button>
+        <div class="mini-progress" *ngIf="mainBusy() || mainProgress() > 0">
+          <div class="mini-fill main" [style.width.%]="mainProgress()"></div>
+        </div>
+        <div class="lab-result" *ngIf="mainResult() !== null">
+          <div class="result-row">
+            <span>Resultado</span>
+            <strong>{{ mainResult()?.toExponential(4) }}</strong>
+          </div>
+          <div class="result-row time">
+            <span>Tiempo</span>
+            <strong>{{ mainTime()?.toFixed(1) }} ms</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="lab-card worker-card">
+        <div class="lab-header">
+          <span class="lab-tag">🟢 Web Worker</span>
+          <span class="lab-desc">Interfaz libre durante el cálculo</span>
+        </div>
+        <button class="btn-worker" (click)="runWithWorker()" [disabled]="workerBusy()">
+          {{ workerBusy() ? 'Procesando…' : 'Ejecutar con Worker' }}
+        </button>
+        <div class="mini-progress" *ngIf="workerBusy() || workerProgress() > 0">
+          <div class="mini-fill worker" [style.width.%]="workerProgress()"></div>
+        </div>
+        <div class="lab-result" *ngIf="workerResult() !== null">
+          <div class="result-row">
+            <span>Resultado</span>
+            <strong>{{ workerResult()?.toExponential(4) }}</strong>
+          </div>
+          <div class="result-row time">
+            <span>Tiempo</span>
+            <strong>{{ workerTime()?.toFixed(1) }} ms</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-reset" (click)="reset()" *ngIf="mainResult() !== null || workerResult() !== null">
+      Reiniciar resultados
+    </button>
+
+    <div class="sab-section" *ngIf="sabSupported()">
+      <h3 class="sab-title">🔁 SharedArrayBuffer · Demo contador atómico</h3>
+      <p class="sab-desc">
+        Dos contextos (hilo principal y Web Worker) incrementan contadores sobre la misma memoria compartida
+        usando <code>Atomics.add</code>. Sin mensajes <code>postMessage</code>.
+      </p>
+
+      <div class="sab-grid">
+        <div class="sab-counter">
+          <span class="sab-counter-label">Hilo principal</span>
+          <span class="sab-counter-value main">{{ sabMainValue().toLocaleString('es-ES') }}</span>
+        </div>
+        <div class="sab-counter">
+          <span class="sab-counter-label">Web Worker</span>
+          <span class="sab-counter-value worker">{{ sabWorkerValue().toLocaleString('es-ES') }}</span>
+        </div>
+      </div>
+
+      <div class="sab-controls">
+        <button class="btn-sab" (click)="startSabDemo()" [disabled]="sabStatus() === 'running'">
+          {{ sabStatus() === 'running' ? 'Incrementando…' : sabStatus() === 'done' ? 'Volver a ejecutar' : 'Iniciar demo' }}
+        </button>
+        <button class="btn-sab-reset" (click)="resetSabDemo()" [disabled]="sabStatus() === 'running'">
+          Reiniciar
+        </button>
+      </div>
+    </div>
+
+    <div class="sab-unsupported" *ngIf="!sabSupported()">
+      <span>⚠️ SharedArrayBuffer no disponible</span>
+      <p>
+        El navegador requiere los encabezados <code>Cross-Origin-Opener-Policy: same-origin</code> y
+        <code>Cross-Origin-Embedder-Policy: require-corp</code>. Vercel y <code>ng serve</code> ya incluyen esta configuración.
+      </p>
+    </div>
+  </div>
+</div>
