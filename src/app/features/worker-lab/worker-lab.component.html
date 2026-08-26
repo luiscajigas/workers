@@ -1,10 +1,10 @@
 <div class="card">
   <div class="card-header">
     <div class="card-title-wrap">
-      <span class="card-icon">🧪</span>
+      <span class="card-icon">⚡</span>
       <div>
-        <h2>Laboratorio de Workers</h2>
-        <p>Demostración: Hilo principal vs Web Worker</p>
+        <h2>Prueba de rendimiento</h2>
+        <p>Hilo principal contra procesamiento en segundo plano</p>
       </div>
     </div>
   </div>
@@ -43,7 +43,7 @@
     <div class="lab-grid">
       <div class="lab-card main-card">
         <div class="lab-header">
-          <span class="lab-tag">🔴 Hilo principal</span>
+          <span class="lab-tag">Hilo principal</span>
           <span class="lab-desc">Puede bloquear la interfaz</span>
         </div>
         <button class="btn-main" (click)="runMainThread()" [disabled]="mainBusy()">
@@ -66,7 +66,7 @@
 
       <div class="lab-card worker-card">
         <div class="lab-header">
-          <span class="lab-tag">🟢 Web Worker</span>
+          <span class="lab-tag">Web Worker</span>
           <span class="lab-desc">Interfaz libre durante el cálculo</span>
         </div>
         <button class="btn-worker" (click)="runWithWorker()" [disabled]="workerBusy()">
@@ -93,7 +93,7 @@
     </button>
 
     <div class="sab-section" *ngIf="sabSupported()">
-      <h3 class="sab-title">🔁 SharedArrayBuffer · Demo contador atómico</h3>
+      <h3 class="sab-title">SharedArrayBuffer · Demo contador atómico</h3>
       <p class="sab-desc">
         Dos contextos (hilo principal y Web Worker) incrementan contadores sobre la misma memoria compartida
         usando <code>Atomics.add</code>. Sin mensajes <code>postMessage</code>.
@@ -121,7 +121,7 @@
     </div>
 
     <div class="sab-unsupported" *ngIf="!sabSupported()">
-      <span>⚠️ SharedArrayBuffer no disponible</span>
+      <span>SharedArrayBuffer no disponible</span>
       <p>
         El navegador requiere los encabezados <code>Cross-Origin-Opener-Policy: same-origin</code> y
         <code>Cross-Origin-Embedder-Policy: require-corp</code>. Vercel y <code>ng serve</code> ya incluyen esta configuración.

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardComponent } from '@features/dashboard/dashboard.component';
 import { WorkerStatusComponent } from '@features/worker-status/worker-status.component';
-import { WorkerLabComponent } from '@features/worker-lab/worker-lab.component';
 import { ServiceWorkerService } from '@core/services/service-worker.service';
 import { SharedWorkerService } from '@core/services/shared-worker.service';
 import { WorkerFacade } from '@core/services/worker-facade.service';
@@ -9,7 +8,7 @@ import { WorkerFacade } from '@core/services/worker-facade.service';
 @Component({
   selector: 'dw-root',
   standalone: true,
-  imports: [DashboardComponent, WorkerStatusComponent, WorkerLabComponent],
+  imports: [DashboardComponent, WorkerStatusComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })

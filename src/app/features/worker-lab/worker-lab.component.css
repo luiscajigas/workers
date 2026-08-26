@@ -27,7 +27,7 @@
   height: 38px;
   display: grid;
   place-items: center;
-  background: rgba(34, 197, 94, 0.15);
+  background: rgba(34, 197, 94, 0.12);
   border-radius: 10px;
   font-size: 20px;
 }
@@ -61,8 +61,8 @@
 }
 
 .hint-icon { font-size: 18px; flex-shrink: 0; }
-.hint p { font-size: 12px; color: #fcd34d; line-height: 1.5; }
-.hint strong { color: #fbbf24; }
+.hint p { font-size: 12px; color: #92400e; line-height: 1.5; }
+.hint strong { color: #b45309; }
 
 .form-row {
   display: flex;
@@ -80,7 +80,7 @@
 .form-row input {
   flex: 1;
   padding: 10px 14px;
-  background: rgba(15, 23, 42, 0.55);
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   color: var(--text);
@@ -92,6 +92,7 @@
 .form-row input:focus {
   outline: none;
   border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.12);
 }
 
 .counter-row {
@@ -99,7 +100,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  background: rgba(15, 23, 42, 0.5);
+  background: #f8fafc;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   gap: 12px;
@@ -124,10 +125,10 @@
 
 .btn-ghost {
   padding: 10px 16px;
-  background: rgba(99, 102, 241, 0.1);
-  border: 1px solid rgba(99, 102, 241, 0.35);
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.3);
   border-radius: 8px;
-  color: var(--primary);
+  color: var(--primary-dark);
   font-weight: 600;
   font-size: 13px;
   cursor: pointer;
@@ -136,7 +137,7 @@
 }
 
 .btn-ghost:hover {
-  background: rgba(99, 102, 241, 0.18);
+  background: rgba(34, 197, 94, 0.15);
 }
 
 .lab-grid {
@@ -149,15 +150,15 @@
   padding: 16px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  background: rgba(15, 23, 42, 0.55);
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.main-card:hover { border-color: rgba(239, 68, 68, 0.4); }
-.worker-card:hover { border-color: rgba(34, 197, 94, 0.4); }
+.main-card:hover { border-color: rgba(239, 68, 68, 0.4); box-shadow: 0 6px 18px rgba(239,68,68,0.08); }
+.worker-card:hover { border-color: rgba(34, 197, 94, 0.4); box-shadow: 0 6px 18px rgba(34,197,94,0.1); }
 
 .lab-header {
   display: flex;
@@ -181,23 +182,23 @@
 }
 
 .btn-main {
-  background: rgba(239, 68, 68, 0.15);
-  color: #f87171;
-  border: 1px solid rgba(239, 68, 68, 0.35);
+  background: rgba(239, 68, 68, 0.08);
+  color: #b91c1c;
+  border: 1px solid rgba(239, 68, 68, 0.28);
 }
 
 .btn-main:hover:not([disabled]) {
-  background: rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.15);
 }
 
 .btn-worker {
-  background: rgba(34, 197, 94, 0.15);
-  color: #4ade80;
-  border: 1px solid rgba(34, 197, 94, 0.35);
+  background: rgba(34, 197, 94, 0.08);
+  color: #15803d;
+  border: 1px solid rgba(34, 197, 94, 0.3);
 }
 
 .btn-worker:hover:not([disabled]) {
-  background: rgba(34, 197, 94, 0.25);
+  background: rgba(34, 197, 94, 0.15);
 }
 
 .btn-main[disabled],
@@ -208,7 +209,7 @@
 
 .lab-result {
   padding: 10px;
-  background: rgba(15, 23, 42, 0.6);
+  background: #f8fafc;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
@@ -227,7 +228,7 @@
 
 .mini-progress {
   height: 6px;
-  background: rgba(148, 163, 184, 0.12);
+  background: #e2e8f0;
   border-radius: 999px;
   overflow: hidden;
 }
@@ -239,11 +240,11 @@
   width: 0;
 }
 .mini-fill.main { background: linear-gradient(90deg, #ef4444, #f97316); }
-.mini-fill.worker { background: linear-gradient(90deg, #22c55e, #14b8a6); }
+.mini-fill.worker { background: linear-gradient(90deg, #10b981, #22c55e); }
 
 .btn-reset {
   padding: 10px 14px;
-  background: rgba(148, 163, 184, 0.1);
+  background: #f1f5f9;
   border: 1px solid var(--border);
   border-radius: 8px;
   color: var(--text-muted);
@@ -254,7 +255,7 @@
   transition: all 0.15s ease;
 }
 .btn-reset:hover {
-  background: rgba(148, 163, 184, 0.18);
+  background: #e2e8f0;
   color: var(--text);
 }
 
@@ -271,7 +272,7 @@
 .sab-title {
   font-size: 13px;
   font-weight: 700;
-  color: #86efac;
+  color: #15803d;
   letter-spacing: -0.1px;
 }
 
@@ -281,10 +282,11 @@
   line-height: 1.55;
 }
 .sab-desc code {
-  background: rgba(15, 23, 42, 0.6);
+  background: #ffffff;
+  border: 1px solid var(--border);
   padding: 1px 5px;
   border-radius: 4px;
-  color: #c4b5fd;
+  color: #6d28d9;
   font-family: 'JetBrains Mono', Consolas, monospace;
   font-size: 10.5px;
 }
@@ -296,7 +298,7 @@
 }
 
 .sab-counter {
-  background: rgba(15, 23, 42, 0.55);
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 10px 12px;
@@ -317,8 +319,8 @@
   font-weight: 800;
   font-family: 'JetBrains Mono', Consolas, monospace;
 }
-.sab-counter-value.main { color: #f87171; }
-.sab-counter-value.worker { color: #4ade80; }
+.sab-counter-value.main { color: #b91c1c; }
+.sab-counter-value.worker { color: #15803d; }
 
 .sab-controls {
   display: flex;
@@ -333,12 +335,12 @@
   font-size: 12.5px;
   cursor: pointer;
   border: 1px solid rgba(34, 197, 94, 0.35);
-  background: rgba(34, 197, 94, 0.14);
-  color: #86efac;
+  background: rgba(34, 197, 94, 0.08);
+  color: #15803d;
   font-family: inherit;
   transition: all 0.15s ease;
 }
-.btn-sab:hover:not([disabled]) { background: rgba(34, 197, 94, 0.22); }
+.btn-sab:hover:not([disabled]) { background: rgba(34, 197, 94, 0.15); }
 .btn-sab[disabled] { opacity: 0.5; cursor: not-allowed; }
 
 .btn-sab-reset {
@@ -348,12 +350,12 @@
   font-size: 12.5px;
   cursor: pointer;
   border: 1px solid var(--border);
-  background: rgba(148, 163, 184, 0.1);
+  background: #f1f5f9;
   color: var(--text-muted);
   font-family: inherit;
   transition: all 0.15s ease;
 }
-.btn-sab-reset:hover:not([disabled]) { background: rgba(148, 163, 184, 0.18); color: var(--text); }
+.btn-sab-reset:hover:not([disabled]) { background: #e2e8f0; color: var(--text); }
 .btn-sab-reset[disabled] { opacity: 0.5; cursor: not-allowed; }
 
 .sab-unsupported {
@@ -368,18 +370,19 @@
 .sab-unsupported > span {
   font-size: 12.5px;
   font-weight: 700;
-  color: #fbbf24;
+  color: #92400e;
 }
 .sab-unsupported p {
   font-size: 11.5px;
-  color: #fcd34d;
+  color: #b45309;
   line-height: 1.55;
 }
 .sab-unsupported code {
-  background: rgba(15, 23, 42, 0.55);
+  background: #ffffff;
+  border: 1px solid rgba(245, 158, 11, 0.25);
   padding: 1px 5px;
   border-radius: 4px;
-  color: #fde68a;
+  color: #78350f;
   font-family: 'JetBrains Mono', Consolas, monospace;
   font-size: 10.5px;
 }
